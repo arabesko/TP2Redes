@@ -155,16 +155,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e64ddd0fbb6c1a4da45fd23b38b3a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runnerHandler: {fileID: 0}
-  _mainMenuPanel: {fileID: 0}
-  _connectingPanel: {fileID: 0}
-  _browserPanel: {fileID: 0}
-  _hostPanel: {fileID: 0}
-  _connectButton: {fileID: 0}
-  _gOToHostButton: {fileID: 0}
-  hostButton: {fileID: 0}
-  _connectingText: {fileID: 0}
-  sessionNameField: {fileID: 0}
+  _runnerHandler: {fileID: 768313844}
+  _mainMenuPanel: {fileID: 991923467}
+  _connectingPanel: {fileID: 1360916780}
+  _browserPanel: {fileID: 1365406416}
+  _hostPanel: {fileID: 911507744}
+  _connectButton: {fileID: 350400282}
+  _goToHostButton: {fileID: 1852019106}
+  _hostButton: {fileID: 1704666535}
+  _connectingText: {fileID: 1144553184}
+  _sessionNameField: {fileID: 866667822}
 --- !u!114 &73602777
 MonoBehaviour:
   m_ObjectHideFlags: 0

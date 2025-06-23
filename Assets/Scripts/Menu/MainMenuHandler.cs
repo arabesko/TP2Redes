@@ -18,18 +18,25 @@ public class MainMenuHandler : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Button _connectButton; 
     [SerializeField] private Button _goToHostButton;
-    [SerializeField] private Button hostButton; 
+    [SerializeField] private Button _hostButton; 
 
     [Header("Texts")]
     [SerializeField] private TMP_Text _connectingText; 
 
     [Header("InputFields")]
-    [SerializeField] private TMP_InputField sessionNameField;
+    [SerializeField] private TMP_InputField _sessionNameField;
 
     private void Awake()
     {
         _connectButton.onClick.AddListener(JoinLobbyButton);
         _goToHostButton.onClick.AddListener(ShowHostPanel);
+        _hostButton.onClick.AddListener(CreateGameSession);
+
+        _runnerHandler.OnLobbyJoined += () =>
+        {
+            _connectingPanel.SetActive(false);
+            _browserPanel.SetActive(true);
+        };
     }
 
     void JoinLobbyButton()
@@ -49,6 +56,7 @@ public class MainMenuHandler : MonoBehaviour
 
     void CreateGameSession()
     {
-
+        _hostButton.interactable = false;
+        _runnerHandler.CreateGame(_sessionNameField.text, "Game");
     }
 }

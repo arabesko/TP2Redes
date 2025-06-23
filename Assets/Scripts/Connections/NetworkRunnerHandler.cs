@@ -18,7 +18,7 @@ public class NetworkRunnerHandler : MonoBehaviour, INetworkRunnerCallbacks
 
     private void Start()
     {
-        JoinLobby();
+        //JoinLobby();
     }
 
     #region Lobby
