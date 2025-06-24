@@ -264,6 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7144113476464092193}
+  - component: {fileID: 4026611775572228208}
   m_Layer: 5
   m_Name: Session  Item
   m_TagString: Untagged
@@ -294,6 +295,21 @@ RectTransform:
   m_AnchoredPosition: {x: 261.22128, y: -36.5515}
   m_SizeDelta: {x: 445.8474, y: 47.103}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4026611775572228208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486886553694555095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde2a4ea925727a40babc09ee2957404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: {fileID: 3086474954543916608}
+  _playerCount: {fileID: 7122233465468210369}
+  _joinButtom: {fileID: 6882829480367395977}
 --- !u!1 &5432496671217179690
 GameObject:
   m_ObjectHideFlags: 0
