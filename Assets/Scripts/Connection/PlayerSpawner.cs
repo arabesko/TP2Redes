@@ -9,8 +9,27 @@ public class PlayerSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField] private NetworkPrefabRef _playerPrefab;
 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
-    public void OnInput(NetworkRunner runner, NetworkInput input) { }
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+    {
+        if (runner.IsServer)
+        {
+            //Esto spawnea un nuevo jugador y le da autirad de input para que manipule
+            //su player en el host
+            runner.Spawn(_playerPrefab, null, null, player);
+        }
+    }
+
+    private LocalInput _localInput;
+
+    public void OnInput(NetworkRunner runner, NetworkInput input)
+    {
+        if (!NetworkReference.Local) return;
+
+        _localInput ??= NetworkReference.Local.localInputs;
+
+        input.Set(_localInput.GetLocalInputs());
+
+    }
     public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason) { }
 
 

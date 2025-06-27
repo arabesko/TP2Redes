@@ -35,11 +35,11 @@ namespace Fusion {
   [RequireComponent(typeof(CharacterController))]
   [NetworkBehaviourWeaved(NetworkCCData.WORDS)]
   // ReSharper disable once CheckNamespace
-  public sealed unsafe class NetworkCharacterController : NetworkTRSP, INetworkTRSPTeleport, IBeforeAllTicks, IAfterAllTicks, IBeforeCopyPreviousState {
+  public unsafe class NetworkCharacterController : NetworkTRSP, INetworkTRSPTeleport, IBeforeAllTicks, IAfterAllTicks, IBeforeCopyPreviousState {
     new ref NetworkCCData Data => ref ReinterpretState<NetworkCCData>();
 
-    [Header("Character Controller Settings")]
-    public float gravity = -20.0f;
+        [Header("Character Controller Settings")]
+        public float gravity = 0;//-20.0f;
     public float jumpImpulse   = 8.0f;
     public float acceleration  = 10.0f;
     public float braking       = 10.0f;
@@ -47,7 +47,7 @@ namespace Fusion {
     public float rotationSpeed = 15.0f;
 
     Tick                _initial;
-    CharacterController _controller;
+    protected CharacterController _controller;
 
     public Vector3 Velocity {
       get => Data.Velocity;
@@ -74,7 +74,7 @@ namespace Fusion {
       }
     }
 
-    public void Move(Vector3 direction) {
+    public virtual void Move(Vector3 direction) {
       var deltaTime    = Runner.DeltaTime;
       var previousPos  = transform.position;
       var moveVelocity = Data.Velocity;
@@ -95,7 +95,7 @@ namespace Fusion {
         horizontalVel = Vector3.Lerp(horizontalVel, default, braking * deltaTime);
       } else {
         horizontalVel      = Vector3.ClampMagnitude(horizontalVel + direction * acceleration * deltaTime, maxSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Runner.DeltaTime);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Runner.DeltaTime);
       }
 
       moveVelocity.x = horizontalVel.x;
