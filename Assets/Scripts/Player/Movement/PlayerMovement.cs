@@ -8,6 +8,7 @@ public class PlayerMovement : NetworkCharacterController
     
     public override void Move(Vector3 direction)
     {
+        
         var deltaTime = Runner.DeltaTime;
         var previousPos = transform.position;
         var moveVelocity = Velocity;

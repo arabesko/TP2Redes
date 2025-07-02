@@ -21,6 +21,7 @@ public class PlayerController : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        
         if (GetInput(out NetworkInputData inputData))
         {
             _animator.SetFloat("LastX", inputData.moveInputX);

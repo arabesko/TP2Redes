@@ -20,8 +20,9 @@ public class MainMenuHandler : MonoBehaviour
     [Header("Texts")]
     [SerializeField] private TMP_Text _connectingText;
     
-    [Header("InputFields")] 
+    [Header("InputFields")]
     [SerializeField] private TMP_InputField _sessionNameField;
+    [SerializeField] private TMP_InputField _nickNameField;
 
     private void Awake()
     {
@@ -40,8 +41,11 @@ public class MainMenuHandler : MonoBehaviour
     {
         _runnerHandler.JoinLobby();
         
+        PlayerPrefs.SetString("NickName", _nickNameField.text);
+        
         _mainMenuPanel.SetActive(false);
         _connectingPanel.SetActive(true);
+
 
         _connectingText.text = "Joining lobby...";
     }
