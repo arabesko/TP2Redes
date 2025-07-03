@@ -29,9 +29,9 @@ public class PlayerController : NetworkBehaviour
 
             Vector3 movi = new Vector3(inputData.moveInputX, 0, inputData.moveInputZ);
             _playerMovement.Move(movi.normalized);
-            Debug.LogWarning($"Movimiento: {inputData.moveInputX}/{inputData.moveInputZ} - " +
-                             $"Fire: {inputData.isFirePressed} - " +
-                             $"FireClick {inputData.networkButtomFireClick.IsSet(MyButtoms.fireClick)}");
+            //Debug.LogWarning($"Movimiento: {inputData.moveInputX}/{inputData.moveInputZ} - " +
+            //                 $"Fire: {inputData.isFirePressed} - " +
+            //                 $"FireClick {inputData.networkButtomFireClick.IsSet(MyButtoms.fireClick)}");
 
             if (inputData.isFirePressed)
             {

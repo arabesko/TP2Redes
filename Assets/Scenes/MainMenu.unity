@@ -2013,6 +2013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boundsWith: 256.7
   _boundsHeight: 144.9
+  _textDie: {fileID: 0}
 --- !u!4 &898909486
 Transform:
   m_ObjectHideFlags: 0

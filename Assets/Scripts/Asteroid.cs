@@ -29,6 +29,10 @@ public class Asteroid : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        Vector3 fixedPosition = transform.position;
+        fixedPosition.y = 0f; // Fuerza Y=0
+        transform.position = fixedPosition; // Sobrescribe cualquier cambio en Y
+
         RotationAsteroid();
         transform.position = GameManager.Instance.AjustPositionToBounds(transform.position);
     }
@@ -42,26 +46,13 @@ public class Asteroid : NetworkBehaviour
         _netRB.Rigidbody.MoveRotation(_netRB.Rigidbody.rotation * deltaRotation);
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (!HasStateAuthority) return;
-
-    //    if (collision.gameObject.TryGetComponent(out Player enemy))
-    //    {
-    //        enemy.RPC_TakeDamage(_damage);
-    //    }
-    //}
-
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_TakeDamage(float damage)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (!Object.HasStateAuthority) return;
+        if (!Object || !Object.HasStateAuthority) return;
 
-        _health -= damage;
-
-        if (_health <= 0)
+        if (collision.transform.TryGetComponent(out LifeHandler lifeHandler))
         {
-            Death();
+            lifeHandler.TakeDamage(_damage);
         }
     }
 

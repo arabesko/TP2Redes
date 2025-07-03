@@ -1,9 +1,12 @@
+using Fusion;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     public static GameManager Instance { get; private set; }
     [SerializeField] private float _boundsWith, _boundsHeight;
+    public GameObject deathUI;
+
 
     private void Awake()
     {
@@ -33,5 +36,10 @@ public class GameManager : MonoBehaviour
         position.y = 0;
 
         return position;
+    }
+
+    public void ShowDeathUI()
+    {
+        deathUI.SetActive(true);
     }
 }
